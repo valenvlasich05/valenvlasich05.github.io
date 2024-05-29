@@ -46,10 +46,3 @@ body {
     grid-gap: 20px;
     margin-left: 100px;
 }
-
-.box3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
-    margin-left: 100px;
-}
