@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="free,book,swap,library,virtual">
+    <meta name="author" content="Valentina Vlasich">
+    <meta name="description"
+        content="Free book swap, swap your old books with others and create your virtual library for browsing">
+    <title>Book Swap</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('back.png');
+            /* Add your background image here */
+            background-size: cover;
+            /* Ensure the image covers the entire background */
+            background-position: center;
+            /* Center the image */
+            background-repeat: no-repeat;
+            /* Prevent the image from repeating */
+            color: #000000;
+            position: relative;
+        }
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            padding-top: 20px;
+            /* Add some padding to the top */
+            position: relative;
+        }
+
+        .login-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #d0f2a0;
+            color: rgb(0, 0, 0);
+            padding: 12px 18px;
+            /* Increased padding for larger button */
+            border: none;
+            border-radius: 10px;
+            /* More rounded corners */
+            cursor: pointer;
+            font-size: 18px;
+            /* Increased font size */
+        }
+
+        .login-button:hover {
+            background-color: #567972;
+        }
+
+        .footer {
+            background-color: #90d4c5;
+            color: #000000;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .intro-box,
+        .library-box {
+            background-color: #d0f2a0;
+            /* Green background for the boxes */
+            border-radius: 10px;
+            /* Rounded corners for the boxes */
+            padding: 15px;
+            /* Padding inside the boxes */
+            margin: 10px auto;
+            /* Space between the boxes and centering them */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow for the boxes */
+            width: 100%;
+            /* Full width of the container */
+            max-width: 700px;
+            /* Max width for the boxes */
+            text-align: center;
+            /* Centered text inside the boxes */
+        }
+
+        .intro-box {
+            padding: 20px;
+            /* Added padding */
+        }
+
+        .intro-box h2 {
+            color: #0d1f2d;
+            /* Darker color for the subtitle */
+            font-size: 24px;
+            /* Adjusted font size for the subtitle */
+            margin: 0;
+        }
+
+        .intro-box p {
+            color: #000000;
+            /* Black text for the paragraph */
+            font-size: 18px;
+            /* Adjusted font size */
+        }
+
+        .social-icons {
+            margin-bottom: 20px;
+        }
+
+        .social-icons img {
+            width: 50px;
+            /* Size for social media icons */
+            margin: 0 15px;
+            /* Spacing between icons */
+            vertical-align: middle;
+        }
+
+        .search-box {
+            background-color: #ffffff;
+            /* White background for the search box */
+            border-radius: 10px;
+            /* Rounded corners for the search box */
+            padding: 15px;
+            /* Padding inside the search box */
+            margin: 20px auto;
+            /* Space around the search box */
+            max-width: 500px;
+            /* Limit the width of the search box */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow for the search box */
+        }
+
+        .search-box label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .search-box input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .search-box button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .search-box button:hover {
+            background-color: #567972;
+        }
+
+        .library-box {
+            background-color: #d0f2a0;
+            /* Green background for the library box */
+            border-radius: 10px;
+            /* Rounded corners for the box */
+            padding: 20px;
+            /* Added padding */
+            margin: 10px auto;
+            /* Space around the library box */
+            max-width: 700px;
+            /* Limit the width of the library box */
+            text-align: center;
+            /* Centered text inside the library box */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow for the box */
+        }
+
+        .library-box h3 {
+            color: #0d1f2d;
+            /* Darker color for the title */
+            font-size: 24px;
+            /* Adjusted font size for the title */
+            margin: 0;
+        }
+
+        .library-box p {
+            color: #000000;
+            /* Black text for the paragraph */
+            font-size: 18px;
+            /* Adjusted font size */
+        }
+
+        .form-group {
+            background-color: #ffffff;
+            /* White background for the forms */
+            padding: 15px;
+            /* Added padding */
+            border-radius: 10px;
+            /* Rounded corners for the forms */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow for form elements */
+            max-width: 500px;
+            /* Same width as search-box */
+            margin: 20px auto;
+            /* Center the form-group */
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .form-group button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .form-group button:hover {
+            background-color: #567972;
+        }
+
+        .bottom-left-image {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            width: 280px;
+            height: auto;
+        }
+
+        h1 {
+            color: #000000;
+            /* Black color for better contrast */
+            font-size: 48px;
+            /* Adjusted font size */
+            margin: 0;
+            font-weight: 700;
+            background-color: #d0f2a0;
+            /* Green background */
+            padding: 15px 25px;
+            /* Padding around the text */
+            border-radius: 12px;
+            /* Rounded corners for the background */
+            display: inline-block;
+            /* Adjusted display for background color */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <button class="login-button">Log In</button>
+        <h1>Book Swap</h1>
+    </div>
+
+    <div class="container">
+        <div class="intro-box">
+            <div class="social-icons">
+                <a href="https://instagram.com"><img src="instagram_6422200.png" alt="Instagram"></a>
+                <a href="https://tiktok.com"><img src="tik-tok_6422207.png" alt="TikTok"></a>
+            </div>
+            <h2>Swap your favourite books with other book worms.</h2>
+            <p>You search, we find it, you swap it!</p>
+            <div class="search-box">
+                <label for="search-book">Write down the book you’re looking for...</label>
+                <input type="text" id="search-book" name="search-book" placeholder="I’m looking for...">
+                <button type="button">BEGIN SEARCH</button>
+            </div>
+        </div>
+
+        <div class="library-box">
+            <h3>Your Virtual Library</h3>
+            <p>Add books you own to your library. If others are looking for a book in your library we’ll inform you of a
+                possible swap!</p>
+            <div class="form-group">
+                <label for="add-book">My Book is...</label>
+                <input type="text" id="add-book" name="add-book" placeholder="My Book is...">
+                <button type="button">ADD BOOK</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Book Swap</p>
+    </div>
+
+    <img src="books.png" alt="Books" class="bottom-left-image">
+
+</body>
+
+</html>
